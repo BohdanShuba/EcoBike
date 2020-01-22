@@ -8,5 +8,9 @@ public class EBike extends Speedelec {
                 "Price: " + super.getPrice() + " euros.";
     }
 
-
+    @Override
+    public String toLine() {
+        return BikeType.E_BIKE.getName() + " " + getBrand() + "; " + getMaxSpeed() + "; " + getWeight() + "; "
+                + isAvailabilityLights() + "; " + getBatteryCapacity() + "; " + getColor() + "; " + getPrice();
+    }
 }

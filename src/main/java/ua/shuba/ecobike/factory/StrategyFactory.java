@@ -20,6 +20,8 @@ public class StrategyFactory {
         strategies.put(StrategyType.ADD_FOLDING_BIKE, new AddFoldingBikeStrategy(bikeStorage, userInteraction));
         strategies.put(StrategyType.ADD_SPEEDELEC, new AddSpeedelecStrategy(bikeStorage, userInteraction));
         strategies.put(StrategyType.ADD_EBIKE, new AddEBikeStrategy(bikeStorage, userInteraction));
+        strategies.put(StrategyType.FIND_BY_BRAND, new FindFirstByBrandStrategy(bikeStorage, userInteraction));
+        strategies.put(StrategyType.WRITE_TO_FILE, new WriteToFileStrategy(bikeStorage));
         strategies.put(StrategyType.STOP_THE_PROGRAM, new StopProgramStrategy(bikeStorage));
 
     }

@@ -10,8 +10,6 @@ public abstract class AbstractBike implements Bike {
     private String color;
     private int price;
 
-
-
     protected String hasLights() {
         return availabilityLights ? "" : "no ";
     }

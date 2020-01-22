@@ -33,6 +33,12 @@ public class FoldingBike extends AbstractBike {
     }
 
     @Override
+    public String toLine() {
+        return BikeType.FOLDING_BIKE.getName() + " " + getBrand() + "; " + getSizeWheels() + "; " + getNumberGears() + "; " + getWeight() + "; "
+                + isAvailabilityLights() + "; " + getColor() + "; " + getPrice();
+    }
+
+    @Override
     public int hashCode() {
         return Objects.hash(sizeWheels, numberGears);
     }

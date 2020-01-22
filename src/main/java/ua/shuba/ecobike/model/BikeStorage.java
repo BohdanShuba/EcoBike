@@ -7,6 +7,7 @@ import java.util.Objects;
 
 public class BikeStorage {
     private final List<Bike> bikeList;
+    private boolean unsavedData;
     
     public BikeStorage(List<Bike> bikeList) {
         this.bikeList = new ArrayList<>(bikeList);
@@ -18,6 +19,15 @@ public class BikeStorage {
 
     public void addBike(Bike bike) {
         bikeList.add(bike);
+        unsavedData = true;
+    }
+
+    public boolean isUnsavedData() {
+        return unsavedData;
+    }
+
+    public void setUnsaved() {
+        this.unsavedData = true;
     }
 
     @Override

@@ -36,6 +36,13 @@ public class FileProcessorImpl implements FileProcessor {
 
     @Override
     public void writeBikes(List<Bike> bikes, File file) {
-        // todo
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file))) {
+            for (Bike bike : bikes) {
+                bufferedWriter.write(bike.toLine());
+                bufferedWriter.newLine();
+            }
+        } catch (IOException e) {
+            throw new EcoBikeException("Cannot write bikes file", e);
+        }
     }
 }

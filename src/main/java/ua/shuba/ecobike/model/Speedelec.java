@@ -2,7 +2,7 @@ package ua.shuba.ecobike.model;
 
 import java.util.Objects;
 
-public class Speedelec extends AbstractBike{
+public class Speedelec extends AbstractBike {
 
     private int maxSpeed;
     private int batteryCapacity;
@@ -27,6 +27,12 @@ public class Speedelec extends AbstractBike{
 
     public void setBatteryCapacity(int batteryCapacity) {
         this.batteryCapacity = batteryCapacity;
+    }
+
+    @Override
+    public String toLine() {
+        return BikeType.SPEEDELEC.getName() + " " + getBrand() + "; " + getMaxSpeed() + "; " + getWeight() + "; "
+                + isAvailabilityLights() + "; " + getBatteryCapacity() + "; " + getColor() + "; " + getPrice();
     }
 
     @Override

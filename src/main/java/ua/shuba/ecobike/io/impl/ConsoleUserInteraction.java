@@ -20,7 +20,7 @@ public class ConsoleUserInteraction implements UserInteraction {
         for (StrategyType strategyType : StrategyType.values()) {
             message.append(strategyType.getI()).append(" - ").append(strategyType.getText()).append("\n");
         }
-        System.out.println(message.toString());
+        printMessage(message.toString());
 
     }
 
@@ -30,113 +30,49 @@ public class ConsoleUserInteraction implements UserInteraction {
             try {
                 return StrategyType.getByI(readNumberString());
             } catch (EcoBikeException e) {
-                System.out.println("Wrong value.");
+                printMessage("Wrong value.");
                 printMenu();
             }
         }
     }
 
     @Override
-    public Bike readEbike() {
-        EBike bike = new EBike();
-        String brand = askBrand();
-        bike.setBrand(brand);
-        int weight = askWeight();
-        bike.setWeight(weight);
-        int maxSpeed = askMaxSpeed();
-        bike.setMaxSpeed(maxSpeed);
-        boolean isLightAsvailable = askLightAsvailable();
-        bike.setAvailabilityLights(isLightAsvailable);
-        String color = askColor();
-        bike.setColor(color);
-        int capacity = askCapacity();
-        bike.setBatteryCapacity(capacity);
-        int price = askPrice();
-        bike.setPrice(price);
+    public Bike readSpeedelec() {
+        Speedelec bike = new Speedelec();
+        bike.setBrand(askBrand());
+        bike.setWeight(askWeight());
+        bike.setMaxSpeed(askMaxSpeed());
+        bike.setAvailabilityLights(askLightAvailable());
+        bike.setBatteryCapacity(askCapacity());
+        bike.setColor(askColor());
+        bike.setPrice(askPrice());
         return bike;
     }
 
-    private String askColor() {
-        System.out.println("Input a color: ");
-        return readConsoleString();
-    }
-
-    private int askWeight() {
-        System.out.println("Input the weight of the bike (in grams): ");
-        return readNumberString();
+    @Override
+    public Bike readEbike() {
+        EBike bike = new EBike();
+        bike.setBrand(askBrand());
+        bike.setWeight(askWeight());
+        bike.setMaxSpeed(askMaxSpeed());
+        bike.setAvailabilityLights(askLightAvailable());
+        bike.setColor(askColor());
+        bike.setBatteryCapacity(askCapacity());
+        bike.setPrice(askPrice());
+        return bike;
     }
 
     @Override
     public Bike readFoldingBike() {
         FoldingBike bike = new FoldingBike();
-        String brand = askBrand();
-        bike.setBrand(brand);
+        bike.setBrand(askBrand());
         bike.setSizeWheels(askSizeWheeks());
         bike.setNumberGears(askNumberGears());
-        int weight = askWeight();
-        bike.setWeight(weight);
-        boolean isLightAsvailable = askLightAsvailable();
-        bike.setAvailabilityLights(isLightAsvailable);
-        String color = askColor();
-        bike.setColor(color);
-        int price = askPrice();
-        bike.setPrice(price);
+        bike.setWeight(askWeight());
+        bike.setAvailabilityLights(askLightAvailable());
+        bike.setColor(askColor());
+        bike.setPrice(askPrice());
         return bike;
-    }
-
-    private int askPrice() {
-        System.out.println("Input the price: ");
-        return readNumberString();
-    }
-
-    private int askNumberGears() {
-        System.out.println("Input the number of gears: ");
-        return readNumberString();
-    }
-
-    private int askSizeWheeks() {
-        System.out.println("Input the size of the wheels (in inch): ");
-        return readNumberString();
-    }
-
-    private String askBrand() {
-        System.out.println("Input a brand: ");
-        return readConsoleString();
-    }
-
-    @Override
-    public Bike readSpeedelec() {
-        Speedelec bike = new Speedelec();
-        String brand = askBrand();
-        bike.setBrand(brand);
-        int maxSpeed = askMaxSpeed();
-        bike.setMaxSpeed(maxSpeed);
-        int weight = askWeight();
-        bike.setWeight(weight);
-        boolean isLightAsvailable = askLightAsvailable();
-        bike.setAvailabilityLights(isLightAsvailable);
-        int capacity = askCapacity();
-        bike.setBatteryCapacity(capacity);
-        String color = askColor();
-        bike.setColor(color);
-        int price = askPrice();
-        bike.setPrice(price);
-        return bike;
-    }
-
-    private int askCapacity() {
-        System.out.println("Input the battery capacity (in mAh): ");
-        return readNumberString();
-    }
-
-    private boolean askLightAsvailable() {
-        System.out.println("Input the availability of lights at front and back (TRUE/FALSE): ");
-        return readBoolString();
-    }
-
-    private int askMaxSpeed() {
-        System.out.println("Input the maximum speed (in km/h): ");
-        return readNumberString();
     }
 
     private String readConsoleString() {
@@ -152,9 +88,11 @@ public class ConsoleUserInteraction implements UserInteraction {
             String s = "";
             try {
                 s = readConsoleString();
-                return Integer.parseInt(s);
+                int number = Integer.parseInt(s);
+                if (number < 0) throw new NumberFormatException("Number is less than zero");
+                return number;
             } catch (NumberFormatException e) {
-                System.out.println("Wrong number " + s);
+                printMessage("Wrong number " + s);
             }
         }
     }
@@ -166,8 +104,59 @@ public class ConsoleUserInteraction implements UserInteraction {
                 s = readConsoleString();
                 return Boolean.valueOf(s);
             } catch (NumberFormatException e) {
-                System.out.println("Wrong number " + s);
+                printMessage("Wrong number " + s);
             }
         }
     }
+
+    public String askBrand() {
+        printMessage("Input a brand: ");
+        return readConsoleString();
+    }
+
+    private void printMessage(String s) {
+        System.out.println(s);
+    }
+
+    public int askWeight() {
+        printMessage("Input the weight of the bike (in grams): ");
+        return readNumberString();
+    }
+
+    public boolean askLightAvailable() {
+        printMessage("Input the availability of lights at front and back (TRUE/FALSE): ");
+        return readBoolString();
+    }
+
+    public String askColor() {
+        printMessage("Input a color: ");
+        return readConsoleString();
+    }
+
+    public int askPrice() {
+        printMessage("Input the price: ");
+        return readNumberString();
+    }
+
+    private int askNumberGears() {
+        printMessage("Input the number of gears: ");
+        return readNumberString();
+    }
+
+    private int askSizeWheeks() {
+        printMessage("Input the size of the wheels (in inch): ");
+        return readNumberString();
+    }
+
+    private int askCapacity() {
+        printMessage("Input the battery capacity (in mAh): ");
+        return readNumberString();
+    }
+
+
+    private int askMaxSpeed() {
+        printMessage("Input the maximum speed (in km/h): ");
+        return readNumberString();
+    }
+
 }
