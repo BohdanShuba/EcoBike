@@ -11,6 +11,7 @@ public class StopProgramStrategy extends Strategy {
 
     @Override
     public void process() {
-        System.exit(0);
+        if (getBikeStorage().isUnsavedData()) System.out.println("There are unsaved files. Save bikes before exiting the program.\n");
+        else System.exit(0);
     }
 }

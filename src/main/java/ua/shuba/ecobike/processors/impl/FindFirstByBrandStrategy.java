@@ -16,6 +16,7 @@ public class FindFirstByBrandStrategy extends Strategy {
 
     @Override
     public void process() {
+        System.out.println("If parameter is not important, enter 0\n");
         String brand = userInteraction.askBrand();
         int weight = userInteraction.askWeight();
         String color = userInteraction.askColor();
@@ -33,7 +34,7 @@ public class FindFirstByBrandStrategy extends Strategy {
                 return;
             }
         }
-        System.out.println("A bike with such parameters was not found.");
+        System.out.println("Bike with such parameters was not found.");
     }
 
     private boolean checkPrice(int price, int bikePrice) {
@@ -41,7 +42,7 @@ public class FindFirstByBrandStrategy extends Strategy {
     }
 
     private boolean checkColor(String color, String bikeColor) {
-        return color.isEmpty() || color.equals(bikeColor);
+        return color.isEmpty() || checkSkipChar(color) || color.equals(bikeColor);
     }
 
     private boolean checkWeight(int weight, int bikeWeight) {
@@ -49,6 +50,10 @@ public class FindFirstByBrandStrategy extends Strategy {
     }
 
     private boolean checkBrand(String brand, String bikeBrand) {
-        return brand.isEmpty() || brand.equals(bikeBrand);
+        return brand.isEmpty() || checkSkipChar(brand) || brand.equals(bikeBrand);
+    }
+
+    private boolean checkSkipChar(String str) {
+        return str.length() == 1 && str.charAt(0) == '0';
     }
 }

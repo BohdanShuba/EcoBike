@@ -21,7 +21,7 @@ public class EcoBikeMain {
         FileProcessor fileProcessor = new FileProcessorImpl(new BikeFactory());
         BikeStorage bikeStorage = new BikeStorage(fileProcessor.readBikes(new File(args[0])));
         UserInteraction userInteraction = new ConsoleUserInteraction();
-        StrategyFactory strategyFactory = new StrategyFactory(bikeStorage, userInteraction);
+        StrategyFactory strategyFactory = new StrategyFactory(bikeStorage, userInteraction, fileProcessor);
 
         while (true) {
             userInteraction.printMenu();

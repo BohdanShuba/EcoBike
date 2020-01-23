@@ -26,8 +26,8 @@ public class BikeStorage {
         return unsavedData;
     }
 
-    public void setUnsaved() {
-        this.unsavedData = true;
+    public void setSaved() {
+        this.unsavedData = false;
     }
 
     @Override
