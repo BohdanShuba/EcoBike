@@ -2,13 +2,15 @@ package ua.shuba.ecobike.io.impl;
 
 import ua.shuba.ecobike.exception.EcoBikeException;
 import ua.shuba.ecobike.io.UserInteraction;
-import ua.shuba.ecobike.model.EBike;
 import ua.shuba.ecobike.model.Bike;
+import ua.shuba.ecobike.model.EBike;
 import ua.shuba.ecobike.model.FoldingBike;
 import ua.shuba.ecobike.model.Speedelec;
 import ua.shuba.ecobike.processors.StrategyType;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class ConsoleUserInteraction implements UserInteraction {
 
@@ -66,7 +68,7 @@ public class ConsoleUserInteraction implements UserInteraction {
     public Bike readFoldingBike() {
         FoldingBike bike = new FoldingBike();
         bike.setBrand(askBrand());
-        bike.setSizeWheels(askSizeWheeks());
+        bike.setSizeWheels(askSizeWheels());
         bike.setNumberGears(askNumberGears());
         bike.setWeight(askWeight());
         bike.setAvailabilityLights(askLightAvailable());
@@ -101,12 +103,24 @@ public class ConsoleUserInteraction implements UserInteraction {
         while (true) {
             String s = "";
             try {
-                s = readConsoleString();
+                s = readConsoleString().toLowerCase();
+                if (!(s.equals("true") || s.equals("false")))
+                    throw new IllegalArgumentException("Enter true or false.");
                 return Boolean.valueOf(s);
-            } catch (NumberFormatException e) {
-                printMessage("Wrong number " + s);
+            } catch (IllegalArgumentException e) {
+                printMessage("Wrong data " + s);
             }
         }
+    }
+
+    public String askFilePath() {
+        printMessage("Enter the file path to which you want to write bikes: ");
+        return readConsoleString();
+    }
+
+    public String askFileName() {
+        printMessage("Enter the file name: ");
+        return readConsoleString();
     }
 
     public String askBrand() {
@@ -143,7 +157,7 @@ public class ConsoleUserInteraction implements UserInteraction {
         return readNumberString();
     }
 
-    private int askSizeWheeks() {
+    private int askSizeWheels() {
         printMessage("Input the size of the wheels (in inch): ");
         return readNumberString();
     }

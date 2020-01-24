@@ -15,6 +15,10 @@ public interface UserInteraction {
 
     Bike readSpeedelec();
 
+    String askFilePath();
+
+    String askFileName();
+
     String askBrand();
 
     String askColor();
