@@ -4,6 +4,10 @@ import ua.shuba.ecobike.model.Bike;
 import ua.shuba.ecobike.model.BikeStorage;
 import ua.shuba.ecobike.processors.Strategy;
 
+/**
+ * Concrete strategy. Show all Bikes.
+ */
+
 public class ShowBikesStrategy extends Strategy {
 
     public ShowBikesStrategy(BikeStorage bikeStorage) {

@@ -2,6 +2,10 @@ package ua.shuba.ecobike.model;
 
 import java.util.Objects;
 
+/**
+ * The AbstractBike class describes the general state and behavior of various types of Bikes.
+ */
+
 public abstract class AbstractBike implements Bike {
 
     private String brand;

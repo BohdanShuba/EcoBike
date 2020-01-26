@@ -3,6 +3,10 @@ package ua.shuba.ecobike.factory;
 import ua.shuba.ecobike.exception.EcoBikeException;
 import ua.shuba.ecobike.model.*;
 
+/**
+ * Bike Factory class built on Simple Factory design pattern.
+ * The class creates Bike objects based on the lines read from the file.
+ */
 public class BikeFactory {
 
     public Bike createBike(String bikeString) {

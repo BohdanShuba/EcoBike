@@ -1,15 +1,18 @@
 package ua.shuba.ecobike.io.impl;
 
 import ua.shuba.ecobike.exception.EcoBikeException;
+import ua.shuba.ecobike.factory.BikeFactory;
 import ua.shuba.ecobike.io.FileProcessor;
 import ua.shuba.ecobike.model.Bike;
-import ua.shuba.ecobike.factory.BikeFactory;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * The FileProcessorImpl class is responsible for reading Bikes from and writing Bikes to a file.
+ */
 
 public class FileProcessorImpl implements FileProcessor {
 

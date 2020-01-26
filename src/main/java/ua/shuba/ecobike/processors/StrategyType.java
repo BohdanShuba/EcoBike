@@ -6,6 +6,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
+/**
+ * The StrategyType enumeration contains various program strategies.
+ */
+
 public enum StrategyType {
     SHOW_BIKES(1, "Show the entire EcoBike catalog"),
     ADD_FOLDING_BIKE(2, "Add a new folding bike"),

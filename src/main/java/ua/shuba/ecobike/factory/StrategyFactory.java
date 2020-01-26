@@ -12,6 +12,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
+/**
+ * Strategy Factory class built on SimpleFactory design pattern.
+ * The class creates Bike objects based on the lines read from the file.
+ */
+
 public class StrategyFactory {
 
     private Map<StrategyType, Strategy> strategies = new HashMap<>();

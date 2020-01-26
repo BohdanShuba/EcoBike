@@ -5,6 +5,10 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * The BikeStorage class stores read and user entered bikes. Also checks the changes were saved.
+ */
+
 public class BikeStorage {
     private final List<Bike> bikeList;
     private boolean unsavedData;

@@ -4,6 +4,10 @@ import ua.shuba.ecobike.io.UserInteraction;
 import ua.shuba.ecobike.model.BikeStorage;
 import ua.shuba.ecobike.processors.Strategy;
 
+/**
+ * Concrete strategy. Carries out the addition of E-Bike.
+ */
+
 public class AddEBikeStrategy extends Strategy {
 
     private UserInteraction userInteraction;

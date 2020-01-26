@@ -12,6 +12,10 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+/**
+ * The ConsoleUserInteraction class displays the user interface
+ * and makes it possible to enter the required data through the console.
+ */
 public class ConsoleUserInteraction implements UserInteraction {
 
     private BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));

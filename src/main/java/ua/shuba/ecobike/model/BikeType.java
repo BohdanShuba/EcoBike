@@ -1,5 +1,9 @@
 package ua.shuba.ecobike.model;
 
+/**
+ * The BikeType enumeration contains various kinds of bikes.
+ */
+
 public enum  BikeType {
 
     FOLDING_BIKE("FOLDING BIKE"),

@@ -13,6 +13,10 @@ import java.io.File;
 
 import static java.util.Objects.isNull;
 
+/**
+ * Main class of the program.
+ */
+
 public class EcoBikeMain {
 
     public static void main(String[] args) {

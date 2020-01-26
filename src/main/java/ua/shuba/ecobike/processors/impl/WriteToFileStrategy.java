@@ -6,6 +6,10 @@ import ua.shuba.ecobike.io.UserInteraction;
 import ua.shuba.ecobike.model.BikeStorage;
 import ua.shuba.ecobike.processors.Strategy;
 
+/**
+ * Concrete strategy. Writes Bikes to a file.
+ */
+
 import java.io.File;
 
 public class WriteToFileStrategy extends Strategy {

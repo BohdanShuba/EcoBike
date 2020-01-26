@@ -5,6 +5,10 @@ import ua.shuba.ecobike.model.Bike;
 import ua.shuba.ecobike.model.BikeStorage;
 import ua.shuba.ecobike.processors.Strategy;
 
+/**
+ * Concrete strategy. Carries out the search for the required Bike according to the given parameters.
+ */
+
 public class FindFirstByBrandStrategy extends Strategy {
 
     private UserInteraction userInteraction;
